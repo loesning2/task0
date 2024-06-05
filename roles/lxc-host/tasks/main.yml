@@ -1,2 +1,5 @@
 - name: install required packages
   snap: name=lxd
+
+- name: initialize
+  command: cmd="lxd init"
