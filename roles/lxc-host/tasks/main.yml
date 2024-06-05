@@ -1,8 +1,4 @@
 - name: install required packages
   apt:
     name:
-    - lxc
-    - lxc-templates
-    - python3-lxc
-
-- systemd: name=lxc state=started
+    - lxd

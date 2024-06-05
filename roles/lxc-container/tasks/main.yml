@@ -1,9 +1,5 @@
-- name: create a container
+- name: create containers
   delegate_to: "{{ lxc_host }}"
-  lxc_container:
+  lxd_container:
     name: "{{ inventory_hostname }}"
-    template: ubuntu-cloud
-    template_options: --stream released
-    container_log: yes
-    container_config:
-    - "lxc.network.ipv4 = {{ ansible_host }}/24"
+    wait_for_ipv4_addresses: yes
