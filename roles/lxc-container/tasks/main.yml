@@ -3,5 +3,7 @@
   lxc_container:
     name: "{{ inventory_hostname }}"
     template: ubuntu-cloud
-    template_options: "--stream released"
+    template_options: --stream released
     container_log: yes
+    container_config:
+    - "lxc.network.ipv4 = {{ ansible_host }}/24"

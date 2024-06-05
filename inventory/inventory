@@ -1,6 +1,9 @@
 [lxc_host]
 localhost ansible_connection=local
 
+[lxc_containers]
+etcd_cluster
+
 [etcd_cluster]
 etcd1
 etcd2
