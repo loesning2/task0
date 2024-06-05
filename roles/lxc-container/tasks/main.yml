@@ -2,4 +2,8 @@
   delegate_to: "{{ lxc_host }}"
   lxd_container:
     name: "{{ inventory_hostname }}"
+    source:
+      type: image
+      mode: pull
+      alias: ubuntu-cloud
     wait_for_ipv4_addresses: yes
