@@ -3,3 +3,4 @@
   lxc_container:
     name: "{{ inventory_hostname }}"
     template: ubuntu-cloud
+    container_log: yes
