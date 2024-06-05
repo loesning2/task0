@@ -1,1 +1,5 @@
-- package: name=lxc
+- name: install required packages
+  apt:
+    name:
+    - lxc
+    - python3-lxc
