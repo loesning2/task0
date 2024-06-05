@@ -4,3 +4,6 @@
 - name: initialize
   shell:
     cmd: lxd init --minimal
+
+- name: start the daemon
+  systemd: name=lxd state=started
