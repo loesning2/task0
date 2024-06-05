@@ -1,6 +1,5 @@
 - name: create a container
   delegate_to: "{{ lxc_host }}"
-  become: yes
   lxc_container:
     name: "{{ inventory_hostname }}"
     template: ubuntu-cloud
