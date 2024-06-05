@@ -1,0 +1,25 @@
+- name: get vm list
+  delegate_to: "{{ lxc_host }}"
+  virt: command=list_vms
+  register: virt_list_vms
+  check_mode: no
+
+# - name: ensure the lv for the guest is made
+#   lvol: lv={{ inventory_hostname }} vg={{ volgroup }} size={{ lvm_size }} state=present
+#   delegate_to: "{{ vmhost }}"
+#   when: inventory_hostname not in result.list_vms
+
+- name: create VM and enroll it in IPA
+  include_tasks: create.yml
+  when: state|default('present') == 'present' and inventory_hostname not in virt_list_vms.list_vms
+
+- name: set autostart option for VM
+  # FIXME: autostart does not work with state option and does not show changed status with command option
+  virt: name={{ inventory_hostname }} command=status autostart={{ autostart }}
+  when: state|default('present') == 'present'
+  tags: autostart
+  delegate_to: "{{ lxc_host }}"
+
+- name: delete VM and it's host in IPA
+  include_tasks: destroy.yml
+  when: state|default('present') == 'absent'

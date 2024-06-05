@@ -1,0 +1,12 @@
+- hosts: lxc_host
+  become: yes
+  roles:
+  - lxc-host
+  tasks:
+  - debug: var=lxc_host
+
+- hosts: etcd_cluster
+  become: yes
+  roles:
+  - lxc-container
+  - etcd
