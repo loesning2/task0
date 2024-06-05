@@ -2,4 +2,5 @@
   apt:
     name:
     - lxc
+    - lxc-templates
     - python3-lxc

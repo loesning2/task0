@@ -2,5 +2,4 @@
   delegate_to: "{{ lxc_host }}"
   lxc_container:
     name: "{{ inventory_hostname }}"
-    template: ubuntu
-    state: started
+    template: lxc-ubuntu-cloud
