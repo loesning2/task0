@@ -2,4 +2,5 @@
   snap: name=lxd
 
 - name: initialize
-  command: cmd="lxd init"
+  shell:
+    cmd: lxd init --minimal
