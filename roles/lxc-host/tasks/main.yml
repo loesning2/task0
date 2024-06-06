@@ -1,5 +1,10 @@
-- name: install required packages
+- name: install required packages 1
   snap: name=lxd
+
+- name: install required packages 2
+  apt:
+    name:
+    - python3-lxc
 
 - name: initialize
   shell:
