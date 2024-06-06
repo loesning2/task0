@@ -4,6 +4,7 @@
 - name: install required packages 2
   apt:
     name:
+    - lxc
     - python3-lxc
 
 - name: initialize
