@@ -1,2 +1,3 @@
-ansible_connection: lxc
+ansible_user: ansible
+#ansible_connection: lxc
 #ansible_host: "10.1.1.{{groups['lxc_containers'].index(inventory_hostname)}}"

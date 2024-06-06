@@ -1,4 +1,4 @@
-- name: install required packages 1
+- name: install lxd with snap
   snap: name=lxd
 
     #- name: install required packages 2
@@ -10,3 +10,14 @@
 - name: initialize
   shell:
     cmd: lxd init --minimal
+
+- name: generate an ssh key
+  openssh_keypair:
+    path: "{{ ansible_env.HOME }}/id_ed25519"
+    type: ed25519
+  register: ssh_key
+
+- name: allow ansible to connect to containers by ssh
+  lxd_project:
+    name: default
+    config: "{{ lxd_project_config }}"
