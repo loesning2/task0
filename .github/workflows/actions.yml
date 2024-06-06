@@ -28,4 +28,5 @@ jobs:
       - name: Run tests
         run: |
           sudo apt install -y ansible python3-lxc
+          python3 lxc_test.py
           ansible-playbook -v playbooks/test-etcd-cluster.yml
