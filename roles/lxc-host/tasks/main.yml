@@ -7,6 +7,6 @@
     #    - lxc
     #    - python3-lxc
 
-- name: initialize lxd
+- name: initialize
   shell:
     cmd: lxd init --minimal
