@@ -18,6 +18,6 @@
   register: ssh_key
 
 - name: allow ansible to connect to containers by ssh
-  lxd_project:
+  community.general.lxd_project:
     name: default
     config: "{{ lxd_project_config }}"
