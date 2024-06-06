@@ -1,0 +1,15 @@
+- hosts: lxc_host
+  become: yes
+  roles:
+  - lxc-host
+
+- hosts: lxc_containers
+  become: yes
+  gather_facts: no
+  roles:
+  - lxc-container
+
+- hosts: etcd_cluster
+  become: yes
+  roles:
+  - etcd

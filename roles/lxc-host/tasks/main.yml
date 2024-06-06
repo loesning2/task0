@@ -1,0 +1,27 @@
+- name: install lxd with snap
+  snap: name=lxd
+
+    #- name: install required packages 2
+    #  apt:
+    #    name:
+    #    - lxc
+    #    - python3-lxc
+
+- name: initialize
+  shell:
+    cmd: lxd init --minimal
+
+- name: generate an ssh key
+  become: no
+  openssh_keypair:
+    path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+    type: ed25519
+  register: ssh_key
+
+- debug:
+    var: lxd_project_config
+
+- name: allow ansible to connect to containers by ssh
+  community.general.lxd_project:
+    name: default
+    config: "{{ lxd_project_config }}"
